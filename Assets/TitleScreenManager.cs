@@ -1,7 +1,5 @@
-using System;
 using UnityEngine;
 using Unity.Netcode;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UU
@@ -10,12 +8,20 @@ namespace UU
     {
         [SerializeField] private Button _pressStartButton;
         [SerializeField] private Button _startNewGameButton;
+
+        private Coroutine _startNewGame;
         
         private void Start()
         {
             if (_pressStartButton != null)
             {
                 _pressStartButton.onClick.AddListener(OnPressStartButtonHandleClick);
+                _pressStartButton.Select();
+            }
+            
+            if (_startNewGameButton != null)
+            {
+                _startNewGameButton.onClick.AddListener(OnStartNewGameButtonHandleClick);
             }
         }
         
@@ -24,11 +30,27 @@ namespace UU
             _pressStartButton.onClick.RemoveListener(OnPressStartButtonHandleClick);
         }
 
+        //  NETCODE
         public void StartNetworkAsHost()
         {
             NetworkManager.Singleton.StartHost();
         }
+        
+        //  SCENE MANAGEMENT
+        public void StartWork()
+        {
+            StopWork();
 
+            _startNewGame = StartCoroutine(WorldSaveGameManager.instance.LoadNewGame());
+        }
+
+        public void StopWork()
+        {
+            if (_startNewGame != null)
+                StopCoroutine(_startNewGame);
+        }
+
+        //  UI
         private void OnPressStartButtonHandleClick()
         {
             Debug.Log("HOST HERE");
@@ -36,11 +58,13 @@ namespace UU
             
             _pressStartButton.gameObject.SetActive(false);
             _startNewGameButton.gameObject.SetActive(true);
-        }
-
-        private void OnNewGameStartButton()
-        {
             _startNewGameButton.Select();
+        }
+        
+        private void OnStartNewGameButtonHandleClick()
+        {
+            Debug.Log("START NEW GAME");
+            StartWork();
         }
     }
 }
