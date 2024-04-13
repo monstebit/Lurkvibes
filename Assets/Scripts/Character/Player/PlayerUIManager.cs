@@ -22,6 +22,11 @@ namespace UU
             }
         }
 
+        private void Start()
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+
         private void Update()
         {
             if (_startGameAsClient)
