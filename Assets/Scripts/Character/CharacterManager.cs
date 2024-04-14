@@ -12,5 +12,7 @@ namespace UU
             // DontDestroyOnLoad(this);
             DontDestroyOnLoad(this);
         }
+
+        protected void Update() { }
     }
 }

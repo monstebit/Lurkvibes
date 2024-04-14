@@ -10,5 +10,13 @@ namespace UU
         {
             base.Awake();
         }
+
+        // protected virtual void Update()
+        private new void Update()
+        {
+            base.Update();
+            
+            _playerLocomotionManager.HandleAllMovement();
+        }
     }
 }
