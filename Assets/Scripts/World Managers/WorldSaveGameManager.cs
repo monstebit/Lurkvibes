@@ -6,15 +6,16 @@ namespace UU
 {
     public class WorldSaveGameManager : MonoBehaviour
     {
-        public static WorldSaveGameManager instance;
+        public static WorldSaveGameManager Instance;
 
         [SerializeField] private int _worldSceneIndex = 1;
+        public int WorldSceneIndex => _worldSceneIndex;
 
         private void Awake()
         {
-            if (instance == null)
+            if (Instance == null)
             {
-                instance = this;
+                Instance = this;
             }
             else
             {

@@ -41,7 +41,7 @@ namespace UU
         {
             StopWork();
 
-            _startNewGame = StartCoroutine(WorldSaveGameManager.instance.LoadNewGame());
+            _startNewGame = StartCoroutine(WorldSaveGameManager.Instance.LoadNewGame());
         }
 
         public void StopWork()

@@ -5,16 +5,16 @@ namespace UU
 {
     public class PlayerUIManager : MonoBehaviour
     {
-        public static PlayerUIManager instance;
+        public static PlayerUIManager Instance;
         
         [Header("NETWORK JOIN")] 
         [SerializeField] private bool _startGameAsClient;
 
         private void Awake()
         {
-            if (instance == null)
+            if (Instance == null)
             {
-                instance = this;
+                Instance = this;
             }
             else
             {
