@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace UU
 {
-    public class PlayerLocomotionManager : MonoBehaviour
+    public class PlayerLocomotionManager : CharacterLocomotionManager
     {
 
     }

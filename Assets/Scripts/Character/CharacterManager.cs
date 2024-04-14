@@ -4,8 +4,12 @@ namespace UU
 {
     public class CharacterManager : MonoBehaviour
     {
-        private void Awake()
+        protected void Awake()
         {
+            // Находим корневой объект
+            GameObject rootObject = this.transform.root.gameObject;
+            
+            // DontDestroyOnLoad(this);
             DontDestroyOnLoad(this);
         }
     }
