@@ -7,12 +7,12 @@ namespace UU
     public class PlayerInputManager : MonoBehaviour
     {
         [SerializeField] private Vector2 _movementInput;
-        [SerializeField] private float _verticalInput;
-        [SerializeField] private float _horizontalInput;
-        [SerializeField] private float _moveAmount;
         
         private PlayerControls _playerControls;
         public static PlayerInputManager Instance;
+        public float _moveAmount;
+        public float _verticalInput;
+        public float _horizontalInput;
 
         private void Awake()
         {

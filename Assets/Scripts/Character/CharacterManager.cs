@@ -4,6 +4,8 @@ namespace UU
 {
     public class CharacterManager : MonoBehaviour
     {
+        [SerializeField] public CharacterController CharacterController;
+        
         protected void Awake()
         {
             // Находим корневой объект
