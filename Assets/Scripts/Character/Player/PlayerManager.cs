@@ -16,6 +16,10 @@ namespace UU
         {
             base.Update();
             
+            //  ЕСЛИ МЫ НЕ ВЛАДЕЕМ ЭТИМ GAMEOBJECT, МЫ НЕ МОЖЕМ РЕДАКТИРОВАТЬ ИЛИ КОНТРОЛИРОВАТЬ ЕГО
+            if (!IsOwner)
+                return;
+            
             _playerLocomotionManager.HandleAllMovement();
         }
     }

@@ -6,6 +6,7 @@ namespace UU
     public class PlayerCamera : MonoBehaviour
     {
         public static PlayerCamera Instance;
+        public Camera CameraObject;
 
         private void Awake()
         {

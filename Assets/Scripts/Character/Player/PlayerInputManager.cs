@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -87,6 +86,22 @@ namespace UU
             else if (_moveAmount > 0.5 && _moveAmount <= 1)
             {
                 _moveAmount = 1;
+            }
+        }
+
+        //  ЕСЛИ МЫ СВЕРНУЛИ ОКНО, НЕ СЧИТЫВАЙ НАЖАТИЯ КЛАВИШ УПРАВЛЕНИЯ ИГРОКОМ
+        private void OnApplicationFocus(bool focus)
+        {
+            if (enabled)
+            {
+                if (focus)
+                {
+                    _playerControls.Enable();
+                }
+                else
+                {
+                    _playerControls.Disable();
+                }
             }
         }
     }
