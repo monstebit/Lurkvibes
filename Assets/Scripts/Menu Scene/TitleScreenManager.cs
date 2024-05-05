@@ -8,19 +8,20 @@ namespace UU
     {
         [SerializeField] private Button _pressStartButton;
         [SerializeField] private Button _startNewGameButton;
-
+        
         private Coroutine _startNewGame;
         
         private void Start()
         {
             if (_pressStartButton != null)
             {
-                _pressStartButton.onClick.AddListener(OnPressStartButtonHandleClick);
                 _pressStartButton.Select();
+                _pressStartButton.onClick.AddListener(OnPressStartButtonHandleClick);
             }
             
             if (_startNewGameButton != null)
             {
+                _pressStartButton.Select();
                 _startNewGameButton.onClick.AddListener(OnStartNewGameButtonHandleClick);
             }
         }

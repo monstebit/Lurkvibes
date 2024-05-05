@@ -6,9 +6,9 @@ namespace UU
 {
     public class WorldSaveGameManager : MonoBehaviour
     {
-        public static WorldSaveGameManager Instance;
-
         [SerializeField] private int _worldSceneIndex = 1;
+        
+        public static WorldSaveGameManager Instance;
         public int WorldSceneIndex => _worldSceneIndex;
 
         private void Awake()
