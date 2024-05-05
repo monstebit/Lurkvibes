@@ -8,7 +8,8 @@ namespace UU
         [SerializeField] public CharacterController CharacterController;
         [SerializeField] public CharacterNetworkManager CharacterNetworkManager;
         
-        protected void Awake()
+        // protected void Awake()
+        protected virtual void Awake()
         {
             // Находим корневой объект
             GameObject rootObject = this.transform.root.gameObject;
@@ -17,7 +18,8 @@ namespace UU
             DontDestroyOnLoad(this);
         }
 
-        protected void Update()
+        // protected void Update()
+        protected virtual void Update()
         {
             if (IsOwner)
             {

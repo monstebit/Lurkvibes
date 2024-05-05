@@ -6,13 +6,14 @@ namespace UU
     {
         [SerializeField] private PlayerLocomotionManager _playerLocomotionManager;
         
-        private new void Awake()
+        // private new void Awake()
+        protected override void Awake()
         {
             base.Awake();
         }
 
-        // protected virtual void Update()
-        private new void Update()
+        // private new void Update()
+        protected override void Update()
         {
             base.Update();
             
@@ -21,6 +22,11 @@ namespace UU
                 return;
             
             _playerLocomotionManager.HandleAllMovement();
+        }
+
+        public override void OnNetworkSpawn()
+        {
+            base.OnNetworkSpawn();
         }
     }
 }
