@@ -6,13 +6,17 @@ namespace UU
     public class PlayerInputManager : MonoBehaviour
     {
         [SerializeField] private Vector2 _movementInput;
+        [SerializeField] private Vector2 _cameraInput;
         
-        private PlayerControls _playerControls;
         public static PlayerInputManager Instance;
         public float _moveAmount;
         public float _verticalInput;
         public float _horizontalInput;
-
+        public float _cameraVerticalInput;
+        public float _cameraHorizontalInput;
+        
+        private PlayerControls _playerControls;
+        
         private void Awake()
         {
             if (Instance == null)
@@ -42,6 +46,7 @@ namespace UU
                 _playerControls = new PlayerControls();
 
                 _playerControls.PlayerMovement.Movement.performed += i => _movementInput = i.ReadValue<Vector2>();
+                _playerControls.PlayerCamera.Movement.performed += i => _cameraInput = i.ReadValue<Vector2>();
             }
             
             _playerControls.Enable();
@@ -49,13 +54,30 @@ namespace UU
 
         private void Update()
         {
-            HandleMovementInput();
+            HandlePlayerMovementInput();
+            HandleCameraMovementInput();
         }
 
         //  ИЛИ ОТПИСЫВАТЬСЯ ЛУЧШЕ В DISABLE?
         private void OnDestroy()
         {
             SceneManager.activeSceneChanged -= OnSceneChange;
+        }
+        
+        //  ЕСЛИ МЫ СВЕРНУЛИ ОКНО, НЕ СЧИТЫВАЙ НАЖАТИЯ КЛАВИШ УПРАВЛЕНИЯ ИГРОКОМ
+        private void OnApplicationFocus(bool focus)
+        {
+            if (enabled)
+            {
+                if (focus)
+                {
+                    _playerControls.Enable();
+                }
+                else
+                {
+                    _playerControls.Disable();
+                }
+            }
         }
 
         private void OnSceneChange(Scene oldScene, Scene newScene)
@@ -71,7 +93,7 @@ namespace UU
             }
         }
 
-        private void HandleMovementInput()
+        private void HandlePlayerMovementInput()
         {
             _verticalInput = _movementInput.y;
             _horizontalInput = _movementInput.x;
@@ -88,21 +110,11 @@ namespace UU
                 _moveAmount = 1;
             }
         }
-
-        //  ЕСЛИ МЫ СВЕРНУЛИ ОКНО, НЕ СЧИТЫВАЙ НАЖАТИЯ КЛАВИШ УПРАВЛЕНИЯ ИГРОКОМ
-        private void OnApplicationFocus(bool focus)
+        
+        private void HandleCameraMovementInput()
         {
-            if (enabled)
-            {
-                if (focus)
-                {
-                    _playerControls.Enable();
-                }
-                else
-                {
-                    _playerControls.Disable();
-                }
-            }
+            _cameraVerticalInput = _cameraInput.y;
+            _cameraHorizontalInput = _cameraInput.x;
         }
     }
 }

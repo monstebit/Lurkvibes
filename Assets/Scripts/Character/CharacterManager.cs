@@ -42,5 +42,10 @@ namespace UU
                     CharacterNetworkManager.NetworkRotationSmoothTime);
             }
         }
+
+        protected virtual void LateUpdate()
+        {
+            
+        }
     }
 }
