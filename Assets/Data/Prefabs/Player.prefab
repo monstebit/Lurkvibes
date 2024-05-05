@@ -2026,6 +2026,7 @@ MonoBehaviour:
   _player: {fileID: 0}
   _walkingSpeed: 0
   _runningSpeed: 0
+  _rotationSpped: 15
 --- !u!1 &8862001661328956423
 GameObject:
   m_ObjectHideFlags: 0
@@ -2140,8 +2141,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NetworkPosition:
     m_InternalValue: {x: 0, y: 0, z: 0}
+  NetworkRotation:
+    m_InternalValue: {x: 0, y: 0, z: 0, w: 1}
   NetworkPositionVelocity: {x: 0, y: 0, z: 0}
   NetworkPositionSmoothTime: 0.1
+  NetworkRotationSmoothTime: 0.1
 --- !u!114 &3056046581143484367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2157,6 +2161,7 @@ MonoBehaviour:
   _player: {fileID: 1085555231462370642}
   _walkingSpeed: 2
   _runningSpeed: 5
+  _rotationSpped: 15
 --- !u!143 &-8395475380085996526
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2174,7 +2179,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.9, z: 0}
+  m_Center: {x: 0, y: 0.95, z: 0}
 --- !u!1 &9038309124398825983
 GameObject:
   m_ObjectHideFlags: 0
